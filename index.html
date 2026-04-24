@@ -8,103 +8,177 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #fdf0d5;
       color: #481d24;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      line-height: 1.6;
     }
+
+    /* Hero */
     .hero {
+      background: #fdf0d5;
       text-align: center;
-      padding: 80px 24px 48px;
-      max-width: 600px;
+      padding: 80px 24px 64px;
     }
+    .hero-inner { max-width: 640px; margin: 0 auto; }
     .logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 24px;
+      width: 100px;
+      height: 100px;
+      border-radius: 22px;
       margin-bottom: 24px;
     }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 8px;
-      color: #c5283d;
-    }
-    .tagline {
-      font-size: 1.1rem;
-      color: #6b3a3a;
-      margin-bottom: 32px;
-    }
-    .description {
-      font-size: 1rem;
-      line-height: 1.6;
+    h1 { font-size: 2.2rem; color: #c5283d; margin-bottom: 16px; }
+    .pitch {
+      font-size: 1.05rem;
       color: #5a3030;
-      margin-bottom: 48px;
+      max-width: 560px;
+      margin: 0 auto;
     }
+
+    /* Screenshots */
     .screenshots {
       display: flex;
       gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
-      padding: 0 24px;
-      margin-bottom: 48px;
+      padding: 48px 24px;
+      background: #fff;
     }
     .screenshots img {
-      width: 200px;
+      width: 195px;
       border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(72, 29, 36, 0.15);
+      box-shadow: 0 4px 16px rgba(72, 29, 36, 0.12);
     }
+
+    /* Research */
+    .research {
+      background: #fdf0d5;
+      padding: 64px 24px;
+    }
+    .research-inner { max-width: 640px; margin: 0 auto; }
+    .research h2 {
+      font-size: 1.4rem;
+      color: #c5283d;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .finding {
+      margin-bottom: 24px;
+      padding-left: 16px;
+      border-left: 3px solid #c5283d;
+    }
+    .finding strong { color: #481d24; }
+    .finding p {
+      font-size: 0.92rem;
+      color: #5a3030;
+    }
+    .finding .cite {
+      font-size: 0.8rem;
+      color: #9a7070;
+      margin-top: 4px;
+    }
+
+    /* Support */
     .support {
       background: #fff;
-      width: 100%;
-      padding: 48px 24px;
+      padding: 56px 24px;
       text-align: center;
       border-top: 1px solid #e8d5c0;
     }
-    .support h2 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #481d24;
-    }
-    .support p {
-      font-size: 0.95rem;
-      color: #6b3a3a;
-      line-height: 1.6;
-    }
-    .support a {
-      color: #c5283d;
-      text-decoration: none;
-    }
+    .support h2 { font-size: 1.3rem; margin-bottom: 12px; color: #481d24; }
+    .support p { font-size: 0.95rem; color: #6b3a3a; }
+    .support a { color: #c5283d; text-decoration: none; }
     .support a:hover { text-decoration: underline; }
+
     footer {
       padding: 24px;
+      text-align: center;
       font-size: 0.8rem;
       color: #9a7070;
+      background: #fff;
     }
   </style>
 </head>
 <body>
+
   <div class="hero">
-    <img src="assets/logo.png" alt="This Doesn't Count logo" class="logo">
-    <h1>This Doesn't Count</h1>
-    <p class="tagline">Break bad habits by tracking the ones that don't count.</p>
-    <p class="description">
-      We all have those moments — the extra coffee, the skipped workout, the late-night snack.
-      This Doesn't Count helps you track those "exceptions" so you can see the patterns,
-      set budgets, and take back control. No judgment, just awareness.
-    </p>
+    <div class="hero-inner">
+      <img src="assets/logo.png" alt="This Doesn't Count logo" class="logo">
+      <h1>This Doesn't Count</h1>
+      <p class="pitch">
+        Every habit has a threshold — cross it enough times and your brain rewires itself.
+        Whether it's scrolling, junk food, skipping the gym, or a drink at the end of the day,
+        repeated dopamine hits downregulate your brain's reward receptors, quietly raising the bar
+        until the behavior stops being a choice and starts being a need.
+      </p>
+      <br>
+      <p class="pitch">
+        <strong>You don't need to quit. You need a budget.</strong><br>
+        Set your personal limit, open the app only when you slip,
+        and let the counter do the rest — stay under your number
+        and the biology stays on your side.
+      </p>
+    </div>
   </div>
 
   <!--
   <div class="screenshots">
     <img src="assets/screenshot-1.png" alt="Habits screen">
     <img src="assets/screenshot-2.png" alt="Dashboard screen">
-    <img src="assets/screenshot-3.png" alt="History screen">
+    <img src="assets/screenshot-3.png" alt="History view">
   </div>
   -->
 
-  <div class="support">
+  <div class="research">
+    <div class="research-inner">
+      <h2>The Research</h2>
+
+      <div class="finding">
+        <p><strong>Everyday behavioral addictions are clinically real.</strong>
+        Scrolling, gaming, online shopping, and streaming exploit the brain's reward circuitry
+        and habit formation mechanisms, leading to persistent patterns of compulsion that mimic
+        the dynamics of substance use disorders.</p>
+        <p class="cite">Wyatt Z., Psychiatry &amp; Behavioral Health, 2025</p>
+      </div>
+
+      <div class="finding">
+        <p><strong>Dopamine scrolling is a public health issue.</strong>
+        Dopamine-scrolling operates through reward mechanisms and variable reinforcement schedules,
+        making it a unique and potentially habit-forming behavior distinct from general internet use.</p>
+        <p class="cite">Sharpe &amp; Spooner, SAGE/PMC, 2025</p>
+      </div>
+
+      <div class="finding">
+        <p><strong>Social media rewires the dopamine system.</strong>
+        Overactivation of the dopamine system increases risk of addictive behaviors and leads to
+        reduced reward sensitivity — a hallmark of addiction — meaning natural rewards gradually
+        lose their ability to satisfy.</p>
+        <p class="cite">PMC/NIH, 2025</p>
+      </div>
+
+      <div class="finding">
+        <p><strong>Sugar has the same neurological profile as substances.</strong>
+        Repeated high-sugar intake produces dopaminergic adaptations including changes in receptor
+        binding in the brain's reward center, creating tolerance and compulsive seeking behavior.</p>
+        <p class="cite">Avena et al., NIH/PMC, 2008</p>
+      </div>
+
+      <div class="finding">
+        <p><strong>Alcohol thresholds are well defined.</strong>
+        The NIAAA identifies specific weekly and per-occasion drink counts above which risk of
+        dependence rises sharply, with those drinking within moderate limits having only a
+        2-in-100 chance of developing alcohol use disorder.</p>
+        <p class="cite">NIAAA/NIH</p>
+      </div>
+
+      <div class="finding">
+        <p><strong>Quitting cold turkey makes it worse.</strong>
+        The Abstinence Violation Effect shows that strict zero-tolerance goals cause a single slip
+        to trigger shame and full relapse. Budgeted moderation interrupts this spiral before it starts.</p>
+        <p class="cite">Marlatt &amp; Gordon, Relapse Prevention, 1985</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="support" id="support">
     <h2>Support</h2>
     <p>
       Having trouble or have a question? Reach out and we'll get back to you.<br>
@@ -113,5 +187,6 @@
   </div>
 
   <footer>&copy; 2025 This Doesn't Count</footer>
+
 </body>
 </html>
