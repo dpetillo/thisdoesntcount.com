@@ -4,84 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>This Doesn't Count</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      color: #222;
+      font-family: 'Lexend', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #191C20;
       line-height: 1.6;
-      background: #fff;
+      background: #F8F9FF;
     }
 
     .hero {
       text-align: center;
       padding: 80px 24px 64px;
-      background: #fafafa;
+      background: #0A1628;
     }
     .hero-inner { max-width: 640px; margin: 0 auto; }
-    .logo {
-      width: 100px;
-      height: 100px;
-      border-radius: 22px;
-      margin-bottom: 24px;
+    .text-logo {
+      display: block;
+      width: min(420px, 80vw);
+      height: auto;
+      margin: 0 auto 32px;
+      color: #E1E2E8;
     }
-    h1 { font-size: 2.2rem; color: #222; margin-bottom: 16px; }
     .pitch {
       font-size: 1.05rem;
-      color: #444;
+      color: #D1E4FF;
       max-width: 560px;
       margin: 0 auto;
+      font-weight: 300;
     }
-
-    .screenshots {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 48px 24px;
-    }
-    .screenshots img {
-      width: 195px;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
+    .pitch + .pitch { margin-top: 20px; }
+    .pitch strong { color: #fff; font-weight: 500; }
 
     .research {
-      background: #fafafa;
+      background: #F8F9FF;
       padding: 64px 24px;
     }
     .research-inner { max-width: 640px; margin: 0 auto; }
     .research h2 {
       font-size: 1.4rem;
-      color: #222;
+      color: #191C20;
       margin-bottom: 32px;
       text-align: center;
+      font-weight: 400;
     }
     .finding {
       margin-bottom: 24px;
       padding-left: 16px;
-      border-left: 3px solid #ccc;
+      border-left: 3px solid #2979FF;
     }
-    .finding strong { color: #222; }
-    .finding p { font-size: 0.92rem; color: #444; }
-    .finding .cite { font-size: 0.8rem; color: #999; margin-top: 4px; }
-    .finding .cite a { color: #999; text-decoration: underline; }
-    .finding .cite a:hover { color: #666; }
+    .finding strong { color: #191C20; font-weight: 500; }
+    .finding p { font-size: 0.92rem; color: #43474E; }
+    .finding .cite { font-size: 0.8rem; color: #535F70; margin-top: 4px; }
+    .finding .cite a { color: #1565C0; text-decoration: underline; }
+    .finding .cite a:hover { color: #2979FF; }
 
     .support {
       padding: 56px 24px;
       text-align: center;
-      border-top: 1px solid #eee;
+      background: #0A1628;
+      color: #E1E2E8;
     }
-    .support h2 { font-size: 1.3rem; margin-bottom: 12px; }
-    .support p { font-size: 0.95rem; color: #444; }
-    .support a { color: #333; text-decoration: underline; }
+    .support h2 { font-size: 1.3rem; margin-bottom: 12px; font-weight: 400; }
+    .support p { font-size: 0.95rem; color: #D1E4FF; }
+    .support a { color: #A0CAFD; text-decoration: underline; }
+    .support a:hover { color: #fff; }
 
     footer {
       padding: 24px;
       text-align: center;
       font-size: 0.8rem;
-      color: #999;
+      color: #D1E4FF;
+      background: #0A1628;
     }
   </style>
 </head>
@@ -89,14 +86,39 @@
 
   <div class="hero">
     <div class="hero-inner">
-      <img src="assets/logo.png" alt="This Doesn't Count logo" class="logo">
-      <h1>This Doesn't Count</h1>
+      <svg class="text-logo" role="img" aria-label="this doesn't count" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8528 1040">
+        <g transform="translate(0,820) scale(1,-1)" fill="currentColor">
+          <path d="M137 0V659H240V0ZM28 425V525H362V425Z" transform="translate(0,0)"/>
+          <path d="M72 0V740H175V417L157 405Q167 440 196.0 469.5Q225 499 265.0 517.5Q305 536 347 536Q407 536 447.0 512.5Q487 489 507.0 441.0Q527 393 527 320V0H424V313Q424 358 412.0 387.5Q400 417 375.0 430.5Q350 444 313 442Q283 442 258.0 432.5Q233 423 214.5 406.0Q196 389 185.5 366.5Q175 344 175 318V0H124Q111 0 98.0 0.0Q85 0 72 0Z" transform="translate(384,0)"/>
+          <path d="M89 0V525H192V0ZM139 641Q106 641 88.0 658.0Q70 675 70 706Q70 735 88.5 753.0Q107 771 139 771Q172 771 190.0 754.0Q208 737 208 706Q208 677 189.5 659.0Q171 641 139 641Z" transform="translate(979,0)"/>
+          <path d="M247 -10Q181 -10 128.0 13.0Q75 36 40 81L110 141Q140 106 175.5 90.5Q211 75 256 75Q274 75 289.5 79.5Q305 84 316.5 93.0Q328 102 334.0 114.5Q340 127 340 142Q340 168 321 184Q311 191 289.5 199.5Q268 208 234 217Q176 232 139.0 251.0Q102 270 82 294Q67 313 60.0 335.5Q53 358 53 385Q53 418 67.5 445.5Q82 473 107.5 493.5Q133 514 167.5 525.0Q202 536 241 536Q278 536 314.5 526.0Q351 516 382.0 497.0Q413 478 434 452L375 387Q356 406 333.5 420.5Q311 435 288.0 443.0Q265 451 246 451Q225 451 208.0 447.0Q191 443 179.5 435.0Q168 427 162.0 415.0Q156 403 156 388Q157 375 162.5 363.5Q168 352 178 344Q189 336 211.0 327.0Q233 318 267 310Q317 297 349.5 281.5Q382 266 401 246Q421 227 429.0 202.0Q437 177 437 146Q437 101 411.5 65.5Q386 30 343.0 10.0Q300 -10 247 -10Z" transform="translate(1257,0)"/>
+          <path d="M291 -10Q219 -10 162.5 25.5Q106 61 73.0 122.5Q40 184 40 263Q40 342 72.5 403.5Q105 465 161.0 500.5Q217 536 288 536Q327 536 363.5 523.5Q400 511 429.0 489.5Q458 468 474.5 442.5Q491 417 491 391L461 389V740H564V0H461V125H481Q481 101 465.0 77.5Q449 54 422.5 34.0Q396 14 361.5 2.0Q327 -10 291 -10ZM305 79Q352 79 388.0 103.0Q424 127 444.5 168.5Q465 210 465 263Q465 316 444.5 357.5Q424 399 388.0 423.0Q352 447 305 447Q258 447 222.0 423.0Q186 399 165.5 357.5Q145 316 145 263Q145 210 165.5 168.5Q186 127 222.0 103.0Q258 79 305 79Z" transform="translate(2016,0)"/>
+          <path d="M317 -10Q236 -10 173.5 24.5Q111 59 75.5 119.0Q40 179 40 257Q40 319 60.0 370.0Q80 421 115.5 458.5Q151 496 200.5 516.5Q250 537 308 537Q359 537 403.0 517.5Q447 498 479.5 464.0Q512 430 529.5 383.5Q547 337 546 282L545 238H116L93 320H456L441 303V327Q438 360 419.0 386.0Q400 412 371.0 427.0Q342 442 308 442Q254 442 217.0 421.5Q180 401 161.0 361.5Q142 322 142 264Q142 209 165.0 168.5Q188 128 230.0 106.0Q272 84 327 84Q366 84 399.5 97.0Q433 110 472 144L524 71Q500 47 465.5 29.0Q431 11 392.5 0.5Q354 -10 317 -10Z" transform="translate(3265,0)"/>
+          <path d="M247 -10Q181 -10 128.0 13.0Q75 36 40 81L110 141Q140 106 175.5 90.5Q211 75 256 75Q274 75 289.5 79.5Q305 84 316.5 93.0Q328 102 334.0 114.5Q340 127 340 142Q340 168 321 184Q311 191 289.5 199.5Q268 208 234 217Q176 232 139.0 251.0Q102 270 82 294Q67 313 60.0 335.5Q53 358 53 385Q53 418 67.5 445.5Q82 473 107.5 493.5Q133 514 167.5 525.0Q202 536 241 536Q278 536 314.5 526.0Q351 516 382.0 497.0Q413 478 434 452L375 387Q356 406 333.5 420.5Q311 435 288.0 443.0Q265 451 246 451Q225 451 208.0 447.0Q191 443 179.5 435.0Q168 427 162.0 415.0Q156 403 156 388Q157 375 162.5 363.5Q168 352 178 344Q189 336 211.0 327.0Q233 318 267 310Q317 297 349.5 281.5Q382 266 401 246Q421 227 429.0 202.0Q437 177 437 146Q437 101 411.5 65.5Q386 30 343.0 10.0Q300 -10 247 -10Z" transform="translate(3851,0)"/>
+          <path d="M72 0V525H175V417L157 405Q167 440 196.0 469.5Q225 499 265.0 517.5Q305 536 347 536Q407 536 447.0 512.5Q487 489 507.0 441.0Q527 393 527 320V0H424V313Q424 358 412.0 387.5Q400 417 375.0 430.5Q350 444 313 442Q283 442 258.0 432.5Q233 423 214.5 406.0Q196 389 185.5 366.5Q175 344 175 318V0H124Q111 0 98.0 0.0Q85 0 72 0Z" transform="translate(4330,0)"/>
+          <path d="M37 442 60 700H178L97 442Z" transform="translate(4925,0)"/>
+          <path d="M137 0V659H240V0ZM28 425V525H362V425Z" transform="translate(5130,0)"/>
+          <path d="M295 -10Q222 -10 164.5 26.0Q107 62 73.5 124.0Q40 186 40 263Q40 340 73.5 402.0Q107 464 164.5 500.0Q222 536 295 536Q365 536 422.5 507.5Q480 479 510 430L453 360Q437 383 412.0 402.0Q387 421 359.0 432.0Q331 443 305 443Q257 443 219.5 419.5Q182 396 160.0 355.0Q138 314 138 263Q138 212 161.0 171.5Q184 131 222.0 107.0Q260 83 306 83Q333 83 358.5 92.0Q384 101 408.0 119.0Q432 137 453 163L510 93Q478 48 418.5 19.0Q359 -10 295 -10Z" transform="translate(5794,0)"/>
+          <path d="M256 -10Q200 -10 158.5 16.0Q117 42 94.5 89.0Q72 136 72 201V525H175V229Q175 183 189.5 149.5Q204 116 231.5 98.0Q259 80 298 80Q327 80 351.0 89.5Q375 99 392.5 116.0Q410 133 420.0 157.0Q430 181 430 209V525H533V0H430V110L448 122Q436 85 407.5 55.0Q379 25 340.0 7.5Q301 -10 256 -10Z" transform="translate(6944,0)"/>
+          <path d="M72 0V525H175V417L157 405Q167 440 196.0 469.5Q225 499 265.0 517.5Q305 536 347 536Q407 536 447.0 512.5Q487 489 507.0 441.0Q527 393 527 320V0H424V313Q424 358 412.0 387.5Q400 417 375.0 430.5Q350 444 313 442Q283 442 258.0 432.5Q233 423 214.5 406.0Q196 389 185.5 366.5Q175 344 175 318V0H124Q111 0 98.0 0.0Q85 0 72 0Z" transform="translate(7549,0)"/>
+          <path d="M137 0V659H240V0ZM28 425V525H362V425Z" transform="translate(8144,0)"/>
+        </g>
+        <g transform="translate(0,820) scale(1,-1)">
+          <path d="M2957.50,51.50 C3147.49,51.50 3168.50,72.51 3168.50,262.50 C3168.50,452.49 3147.49,473.50 2957.50,473.50 C2767.51,473.50 2746.50,452.49 2746.50,262.50 C2746.50,72.51 2767.51,51.50 2957.50,51.50 Z" fill="none" stroke="currentColor" stroke-width="103"/>
+          <path d="M6636.50,51.50 C6826.49,51.50 6847.50,72.51 6847.50,262.50 C6847.50,452.49 6826.49,473.50 6636.50,473.50 C6446.51,473.50 6425.50,452.49 6425.50,262.50 C6425.50,72.51 6446.51,51.50 6636.50,51.50 Z" fill="none" stroke="currentColor" stroke-width="103"/>
+        </g>
+        <g transform="translate(0,820) scale(1,-1)">
+          <rect x="2800.0" y="241.5" width="315.0" height="42.0" rx="21.0" fill="currentColor" transform="rotate(45 2957.5 262.5)"/>
+          <rect x="2800.0" y="241.5" width="315.0" height="42.0" rx="21.0" fill="currentColor" transform="rotate(-45 2957.5 262.5)"/>
+          <rect x="6479.0" y="241.5" width="315.0" height="42.0" rx="21.0" fill="currentColor" transform="rotate(45 6636.5 262.5)"/>
+          <rect x="6479.0" y="241.5" width="315.0" height="42.0" rx="21.0" fill="currentColor" transform="rotate(-45 6636.5 262.5)"/>
+        </g>
+      </svg>
       <p class="pitch">
         That extra scroll, the late-night snack, one more drink — they feel harmless
         in the moment. But habits have a tipping point, and most people don't notice
         until they're past it.
       </p>
-      <br>
       <p class="pitch">
         <strong>You don't need to quit. You need a budget.</strong><br>
         Set your personal limit, open the app only when you slip,
@@ -105,14 +127,6 @@
       </p>
     </div>
   </div>
-
-  <!--
-  <div class="screenshots">
-    <img src="assets/screenshot-1.png" alt="Habits screen">
-    <img src="assets/screenshot-2.png" alt="Dashboard screen">
-    <img src="assets/screenshot-3.png" alt="History view">
-  </div>
-  -->
 
   <div class="research">
     <div class="research-inner">
@@ -173,7 +187,7 @@
     </p>
   </div>
 
-  <footer>&copy; 2025 This Doesn't Count</footer>
+  <footer>&copy; 2025–2026 This Doesn't Count</footer>
 
 </body>
 </html>
