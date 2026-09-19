@@ -319,7 +319,7 @@
           </a>
         </div>
         <div class="badge-item">
-          <a href="https://github.com/dpetillo/thisdoesntcount.com/releases/latest" target="_blank" rel="noopener">
+          <a href="https://github.com/dpetillo/thisdoesntcount.com/releases" target="_blank" rel="noopener">
             <img src="https://img.shields.io/badge/GitHub-Android_APK-181717?logo=github&logoColor=white" alt="Get the Android APK on GitHub" class="shields-badge" />
           </a>
         </div>
@@ -476,13 +476,13 @@
         return html;
       }
 
-      fetch('https://api.github.com/repos/dpetillo/thisdoesntcount.com/releases?per_page=3', { headers: { 'Accept': 'application/vnd.github+json' } })
+      fetch('https://api.github.com/repos/dpetillo/thisdoesntcount.com/releases?per_page=10', { headers: { 'Accept': 'application/vnd.github+json' } })
         .then(function (r) {
           if (!r.ok) throw new Error('HTTP ' + r.status);
           return r.json();
         })
         .then(function (data) {
-          var published = (data || []).filter(function (d) { return !d.draft; }).slice(0, 3);
+          var published = (data || []).filter(function (d) { return !d.draft && !d.prerelease; }).slice(0, 3);
           if (!published.length) {
             listEl.innerHTML = '<span class="release-loading">No releases yet.</span>';
             return;
