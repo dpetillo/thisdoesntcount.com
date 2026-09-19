@@ -155,11 +155,11 @@
       }
       .app-store .badges {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         justify-content: center;
-        gap: 20px;
-        padding-top: 4px;
+        gap: 24px;
+        flex-wrap: wrap;
       }
       .app-store .badges a {
         display: inline-block;
@@ -198,6 +198,34 @@
         color: #343A43;
         max-height: 190px;
         overflow-y: auto;
+      }
+      .release-notes .release-item {
+        padding: 10px 0;
+      }
+      .release-notes .release-item + .release-item {
+        border-top: 1px solid #EFF1F7;
+      }
+      .release-notes .release-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 6px;
+      }
+      .release-notes .release-version {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #191C20;
+      }
+      .release-notes h3 {
+        margin: 0 0 6px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #191C20;
+      }
+      .release-notes .release-meta {
+        font-size: 0.75rem;
+        color: #7A8494;
       }
       .release-notes .release-body h4 {
         margin: 8px 0 4px;
@@ -302,9 +330,8 @@
         </div>
       </div>
       <div class="release-notes" id="release-notes">
-        <h3>Latest release <span id="release-version"></span></h3>
-        <p class="release-meta" id="release-meta"></p>
-        <div class="release-body" id="release-body"><span class="release-loading">Loading release notes&hellip;</span></div>
+        <h3>Release notes</h3>
+        <div id="release-list"><span class="release-loading">Loading release notes&hellip;</span></div>
       </div>
     </div>
   </div>
@@ -401,10 +428,8 @@
 
   <script>
     (function () {
-      var verEl = document.getElementById('release-version');
-      var metaEl = document.getElementById('release-meta');
-      var bodyEl = document.getElementById('release-body');
-      if (!verEl || !metaEl || !bodyEl) return;
+      var listEl = document.getElementById('release-list');
+      if (!listEl) return;
 
       function esc(s) {
         return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -418,10 +443,9 @@
           .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
       }
 
-      function render(body) {
+      function renderBody(body) {
         if (!body) {
-          bodyEl.innerHTML = '<span class="release-loading">No release notes for this version.</span>';
-          return;
+          return '<span class="release-loading">No release notes for this version.</span>';
         }
         var out = [];
         var lines = body.split(/\r?\n/);
@@ -437,24 +461,36 @@
           out.push('<p>' + inline(esc(t)) + '</p>');
         });
         if (inList) out.push('</ul>');
-        bodyEl.innerHTML = out.length ? out.join('') : '<span class="release-loading">No release notes for this version.</span>';
+        return out.length ? out.join('') : '<span class="release-loading">No release notes for this version.</span>';
       }
 
-      fetch('https://api.github.com/repos/dpetillo/thisdoesntcount.com/releases/latest', { headers: { 'Accept': 'application/vnd.github+json' } })
+      function buildRelease(d) {
+        var date = d.published_at ? new Date(d.published_at) : null;
+        var html = '<div class="release-item">';
+        html += '<div class="release-head">';
+        html += '<span class="release-version">' + esc(d.tag_name || d.name || '') + '</span>';
+        if (date) html += '<span class="release-meta">' + date.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) + '</span>';
+        html += '</div>';
+        html += '<div class="release-body">' + renderBody(d.body) + '</div>';
+        html += '</div>';
+        return html;
+      }
+
+      fetch('https://api.github.com/repos/dpetillo/thisdoesntcount.com/releases?per_page=3', { headers: { 'Accept': 'application/vnd.github+json' } })
         .then(function (r) {
           if (!r.ok) throw new Error('HTTP ' + r.status);
           return r.json();
         })
         .then(function (data) {
-          verEl.textContent = data.tag_name ? '(' + data.tag_name + ')' : '';
-          if (data.published_at) {
-            var d = new Date(data.published_at);
-            metaEl.textContent = 'Published ' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+          var published = (data || []).filter(function (d) { return !d.draft; }).slice(0, 3);
+          if (!published.length) {
+            listEl.innerHTML = '<span class="release-loading">No releases yet.</span>';
+            return;
           }
-          render(data.body);
+          listEl.innerHTML = published.map(buildRelease).join('');
         })
         .catch(function () {
-          bodyEl.innerHTML = '<span class="release-error">Could not load release notes.</span>';
+          listEl.innerHTML = '<span class="release-error">Could not load release notes.</span>';
         });
     })();
   </script>
