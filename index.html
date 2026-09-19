@@ -142,13 +142,24 @@
         text-align: center;
         background: #F8F9FF;
       }
-      .app-store .badges {
+      .app-store-inner {
+        max-width: 980px;
+        margin: 0 auto;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: center;
-        gap: 24px;
+        gap: 48px;
         flex-wrap: wrap;
+        text-align: left;
+      }
+      .app-store .badges {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 20px;
+        padding-top: 4px;
       }
       .app-store .badges a {
         display: inline-block;
@@ -160,6 +171,60 @@
       }
       .app-store img.shields-badge {
         height: 30px;
+      }
+      .release-notes {
+        flex: 0 1 420px;
+        min-width: 280px;
+        max-width: 460px;
+        background: #fff;
+        border: 1px solid #E2E6F0;
+        border-radius: 10px;
+        padding: 18px 22px;
+        box-shadow: 0 1px 3px rgba(20, 30, 60, 0.08);
+      }
+      .release-notes h3 {
+        margin: 0 0 4px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #191C20;
+      }
+      .release-notes .release-meta {
+        font-size: 0.78rem;
+        color: #7A8494;
+        margin-bottom: 10px;
+      }
+      .release-notes .release-body {
+        font-size: 0.85rem;
+        color: #343A43;
+        max-height: 190px;
+        overflow-y: auto;
+      }
+      .release-notes .release-body h4 {
+        margin: 8px 0 4px;
+        font-size: 0.82rem;
+        color: #1565C0;
+      }
+      .release-notes .release-body h4:first-child {
+        margin-top: 0;
+      }
+      .release-notes .release-body ul {
+        margin: 4px 0;
+        padding-left: 18px;
+      }
+      .release-notes .release-body li {
+        margin-bottom: 4px;
+      }
+      .release-notes .release-body a {
+        color: #1565C0;
+        text-decoration: underline;
+      }
+      .release-notes .release-loading {
+        font-size: 0.82rem;
+        color: #7A8494;
+      }
+      .release-notes .release-error {
+        font-size: 0.82rem;
+        color: #B3261E;
       }
 
     footer {
@@ -218,21 +283,28 @@
   </div>
 
   <div class="app-store">
-    <div class="badges">
-      <div class="badge-item">
-        <a href="https://apps.apple.com/app/id6761794103" target="_blank" rel="noopener">
-          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge" />
-        </a>
+    <div class="app-store-inner">
+      <div class="badges">
+        <div class="badge-item">
+          <a href="https://apps.apple.com/app/id6761794103" target="_blank" rel="noopener">
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge" />
+          </a>
+        </div>
+        <div class="badge-item">
+          <a href="https://github.com/dpetillo/thisdoesntcount.com/releases/latest" target="_blank" rel="noopener">
+            <img src="https://img.shields.io/badge/GitHub-Android_APK-181717?logo=github&logoColor=white" alt="Get the Android APK on GitHub" class="shields-badge" />
+          </a>
+        </div>
+        <div class="badge-item">
+          <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.codepraxis.thisdoesntcount%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fdpetillo%2Fthisdoesntcount.com%22%2C%22author%22%3A%22dpetillo%22%2C%22name%22%3A%22This%20Doesn%27t%20Count%22%7D" target="_blank" rel="noopener">
+            <img src="https://img.shields.io/badge/Obtainium-Android_Auto_Update-6da38a?logo=obtainium" alt="Auto-updates via Obtainium" class="shields-badge" />
+          </a>
+        </div>
       </div>
-      <div class="badge-item">
-        <a href="https://github.com/dpetillo/thisdoesntcount.com/releases/latest" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/GitHub-Android_APK-181717?logo=github&logoColor=white" alt="Get the Android APK on GitHub" class="shields-badge" />
-        </a>
-      </div>
-      <div class="badge-item">
-        <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.codepraxis.thisdoesntcount%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fdpetillo%2Fthisdoesntcount.com%22%2C%22author%22%3A%22dpetillo%22%2C%22name%22%3A%22This%20Doesn%27t%20Count%22%7D" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/Obtainium-Android_Auto_Update-6da38a?logo=obtainium" alt="Auto-updates via Obtainium" class="shields-badge" />
-        </a>
+      <div class="release-notes" id="release-notes">
+        <h3>Latest release <span id="release-version"></span></h3>
+        <p class="release-meta" id="release-meta"></p>
+        <div class="release-body" id="release-body"><span class="release-loading">Loading release notes&hellip;</span></div>
       </div>
     </div>
   </div>
@@ -326,6 +398,66 @@
   </div>
 
   <footer>&copy; 2025–2026 This Doesn't Count</footer>
+
+  <script>
+    (function () {
+      var verEl = document.getElementById('release-version');
+      var metaEl = document.getElementById('release-meta');
+      var bodyEl = document.getElementById('release-body');
+      if (!verEl || !metaEl || !bodyEl) return;
+
+      function esc(s) {
+        return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      }
+
+      function inline(s) {
+        return s
+          .replace(/`([^`]+)`/g, '<code>$1</code>')
+          .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+          .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+          .replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+      }
+
+      function render(body) {
+        if (!body) {
+          bodyEl.innerHTML = '<span class="release-loading">No release notes for this version.</span>';
+          return;
+        }
+        var out = [];
+        var lines = body.split(/\r?\n/);
+        var inList = false;
+        lines.forEach(function (line) {
+          var t = line.trim();
+          if (!t) { if (inList) { out.push('</ul>'); inList = false; } return; }
+          var h = t.match(/^#{1,4}\s+(.+)$/);
+          if (h) { if (inList) { out.push('</ul>'); inList = false; } out.push('<h4>' + inline(esc(h[1])) + '</h4>'); return; }
+          var li = t.match(/^[-*+]\s+(.+)$/);
+          if (li) { if (!inList) { out.push('<ul>'); inList = true; } out.push('<li>' + inline(esc(li[1])) + '</li>'); return; }
+          if (inList) { out.push('</ul>'); inList = false; }
+          out.push('<p>' + inline(esc(t)) + '</p>');
+        });
+        if (inList) out.push('</ul>');
+        bodyEl.innerHTML = out.length ? out.join('') : '<span class="release-loading">No release notes for this version.</span>';
+      }
+
+      fetch('https://api.github.com/repos/dpetillo/thisdoesntcount.com/releases/latest', { headers: { 'Accept': 'application/vnd.github+json' } })
+        .then(function (r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          verEl.textContent = data.tag_name ? '(' + data.tag_name + ')' : '';
+          if (data.published_at) {
+            var d = new Date(data.published_at);
+            metaEl.textContent = 'Published ' + d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+          }
+          render(data.body);
+        })
+        .catch(function () {
+          bodyEl.innerHTML = '<span class="release-error">Could not load release notes.</span>';
+        });
+    })();
+  </script>
 
 </body>
 </html>
