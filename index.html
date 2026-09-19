@@ -150,24 +150,16 @@
         gap: 24px;
         flex-wrap: wrap;
       }
-      .app-store .badge-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-      }
       .app-store .badges a {
         display: inline-block;
         line-height: 0;
       }
-      .app-store .badge-item p {
-        margin: 0;
-        font-size: 0.9rem;
-        color: #444B59;
-      }
       .app-store img {
         height: 40px;
         width: auto;
+      }
+      .app-store img.shields-badge {
+        height: 30px;
       }
 
     footer {
@@ -231,19 +223,16 @@
         <a href="https://apps.apple.com/app/id6761794103" target="_blank" rel="noopener">
           <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" class="app-store-badge" />
         </a>
-        <p>Available on the App Store</p>
       </div>
       <div class="badge-item">
         <a href="https://github.com/dpetillo/thisdoesntcount.com/releases/latest" target="_blank" rel="noopener">
-          <img src="assets/badges/badge-github-android.svg" alt="Get the Android APK on GitHub" />
+          <img src="https://img.shields.io/badge/Get_it_on-GitHub-181717?logo=github&logoColor=white" alt="Get the Android APK on GitHub" class="shields-badge" />
         </a>
-        <p>Android APK on GitHub</p>
       </div>
       <div class="badge-item">
         <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22com.codepraxis.thisdoesntcount%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fdpetillo%2Fthisdoesntcount.com%22%2C%22author%22%3A%22dpetillo%22%2C%22name%22%3A%22This%20Doesn%27t%20Count%22%7D" target="_blank" rel="noopener">
-          <img src="assets/badges/badge_obtainium.png" alt="Update it with Obtainium" />
+          <img src="https://img.shields.io/badge/Auto_updates-Obtainium-6da38a" alt="Auto-updates via Obtainium" class="shields-badge" />
         </a>
-        <p>Auto-updates via Obtainium</p>
       </div>
     </div>
   </div>
